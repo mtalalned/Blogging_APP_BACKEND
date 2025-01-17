@@ -57,7 +57,7 @@ const loginUser = async (req, res) => {
         httpOnly: true, 
         // secure: process.env.NODE_ENV === "production",
         secure: false, 
-        // sameSite: "None" 
+        sameSite: "None" 
     });
 
     res.json({
@@ -74,7 +74,7 @@ const logoutUser = async (req, res) => {
 }
 
 const regenerateAccessToken = async (req, res) => {
-    const refreshToken = req.cookies.refreshToken || req.body.refreshToken;
+    const refreshToken = req.cookies.refreshToken
     if (!refreshToken)
         return res.status(401).json({ message: "no refresh token found!" });
     try {

@@ -12,10 +12,9 @@ import commentRoutes from './src/routes/comment.routes.js'
 
 const app = express()
 
-app.use(cookieParser())
 app.use(express.json())
+app.use(cookieParser())
 app.use(cors())
-
 
 app.use ('/api/v1' , userRoutes)
 app.use ('/api/v1' , postRoutes)
