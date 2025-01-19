@@ -39,7 +39,14 @@ const getPost = async (req , res) => {
         const getAllPosts = await Post.find()
         .populate('user' , 'username')
         .populate('likes' , 'username')
-        .populate('comments')
+        .populate({
+            path: "comments",
+            select: "text",
+            populate: {
+                path: "user",
+                select: "username",
+            },
+        })
     
         res.json({
             message: 'All posts obtained',
